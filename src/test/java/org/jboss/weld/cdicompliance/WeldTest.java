@@ -15,16 +15,26 @@ import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.FieldProd
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.InnerClassFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.InnerClassStaticFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.MultiQualifiedFieldProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.MultiQualifiedStaticFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedFieldProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedStaticFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedWithOtherValueFieldProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedWithOtherValueStaticFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedWithValueFieldProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedWithValueStaticFieldProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.StaticFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.InnerClassMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.InnerClassStaticMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.MethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.MultiQualifiedMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.MultiQualifiedStaticMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedStaticMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithOtherValueMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithOtherValueStaticMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithValueMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithValueStaticMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.StaticMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.util.FieldProducedClass;
 import org.junit.Assert;
 import org.junit.Test;
@@ -119,6 +129,72 @@ public class WeldTest {
 
     /*
      * =========================================================================
+     * STATIC FIELD PRODUCER TEST
+     * =========================================================================
+     */
+
+    @Inject
+    private StaticFieldProducerTest statciFieldProducerTest;
+
+    @Test
+    public void statciFieldProducerTest() {
+        try {
+            statciFieldProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedStaticFieldProducerTest qualifiedStaticFieldProducerTest;
+
+    @Test
+    public void qualifiedStaticFieldProducerTest() {
+        try {
+            qualifiedStaticFieldProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedWithValueStaticFieldProducerTest qualifiedWithValueStaticFieldProducerTest;
+
+    @Test
+    public void qualifiedWithValueStaticFieldProducerTest() {
+        try {
+            qualifiedWithValueStaticFieldProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedWithOtherValueStaticFieldProducerTest qualifiedWithOtherValueStaticFieldProducerTest;
+
+    @Test
+    public void qualifiedWithOtherValueStaticFieldProducerTest() {
+        try {
+            qualifiedWithOtherValueStaticFieldProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private MultiQualifiedStaticFieldProducerTest multiQualifiedStaticFieldProducerTest;
+
+    @Test
+    public void multiQualifiedStaticFieldProducerTest() {
+        try {
+            multiQualifiedStaticFieldProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    /*
+     * =========================================================================
      * METHOD PRODUCER TEST
      * =========================================================================
      */
@@ -178,6 +254,72 @@ public class WeldTest {
     public void multiQualifiedMethodProducerTest() {
         try {
             multiQualifiedMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    /*
+     * =========================================================================
+     * STATIC METHOD PRODUCER TEST
+     * =========================================================================
+     */
+
+    @Inject
+    private StaticMethodProducerTest staticMethodProducerTest;
+
+    @Test
+    public void staticMethodProducerTest() {
+        try {
+            staticMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedStaticMethodProducerTest qualifiedStaticMethodProducerTest;
+
+    @Test
+    public void qualifiedStaticMethodProducerTest() {
+        try {
+            qualifiedStaticMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedWithValueStaticMethodProducerTest qualifiedWithValueStaticMethodProducerTest;
+
+    @Test
+    public void qualifiedWithValueStaticMethodProducerTest() {
+        try {
+            qualifiedWithValueStaticMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedWithOtherValueStaticMethodProducerTest qualifiedWithOtherValueStaticMethodProducerTest;
+
+    @Test
+    public void qualifiedWithOtherValueStaticMethodProducerTest() {
+        try {
+            qualifiedWithOtherValueStaticMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private MultiQualifiedStaticMethodProducerTest multiQualifiedStaticMethodProducerTest;
+
+    @Test
+    public void multiQualifiedStaticMethodProducerTest() {
+        try {
+            multiQualifiedStaticMethodProducerTest.run();
         } catch (ComplianceException ex) {
             Assert.fail(ex.getMessage());
         }

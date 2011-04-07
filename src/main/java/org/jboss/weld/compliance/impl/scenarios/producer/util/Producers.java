@@ -1,12 +1,6 @@
 package org.jboss.weld.compliance.impl.scenarios.producer.util;
 
 import javax.enterprise.inject.Produces;
-import org.jboss.weld.compliance.impl.scenarios.producer.util.FieldProducedClass;
-import org.jboss.weld.compliance.impl.scenarios.producer.util.MethodProducedClass;
-import org.jboss.weld.compliance.impl.scenarios.producer.util.MultiQualified1;
-import org.jboss.weld.compliance.impl.scenarios.producer.util.MultiQualified2;
-import org.jboss.weld.compliance.impl.scenarios.producer.util.Qualified;
-import org.jboss.weld.compliance.impl.scenarios.producer.util.QualifiedWithValue;
 
 /**
  *
