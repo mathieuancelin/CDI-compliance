@@ -99,15 +99,18 @@ public class ProducerReporter implements Scenario {
 
     @Override
     public String reportAll() {
+        String report = "PRODUCER#############################################";
+        report += System.getProperty("line.separator");
         if(tests.size() > 0) {
-            String report = "";
             for(Test test : tests) {
                 report += test.getResult();
                 report += System.getProperty("line.separator");
             }
             return report;
         }
-        return "No test provided";
+        report += "No test provided";
+        report += System.getProperty("line.separator");
+        return report;
     }
 
     @Override

@@ -5,11 +5,14 @@ import org.jboss.arquillian.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.weld.compliance.api.ComplianceReporter;
 import org.jboss.weld.compliance.exception.ComplianceException;
 import org.jboss.weld.compliance.impl.ComplianceReporterImpl;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptorTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.MethodInterceptorTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ClassInterception;
 import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.FieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.InnerClassFieldProducerTest;
@@ -57,7 +60,16 @@ public class WeldTest {
                 .addPackage(FieldProducerTest.class.getPackage())
                 .addPackage(MethodProducerTest.class.getPackage())
                 .addPackage(FieldProducedClass.class.getPackage())
-                .addResource(EmptyAsset.INSTANCE, "META-INF/beans.xml");
+                .addPackage(InterceptorReporter.class.getPackage())
+                .addPackage(MethodInterceptorTest.class.getPackage())
+                .addPackage(ClassInterception.class.getPackage())
+                .addResource("META-INF/beans.xml", "beans.xml");
+//                .addManifestResource(
+//						new UrlAsset( WeldTest.class.getResource( "/META-INF/beans.xml" ) ),
+//						ArchivePaths.create( "beans.xml" )
+//				);
+//                .addResource(EmptyAsset.INSTANCE, "META-INF/beans.xml");
+//        System.out.println(archive.toString(true));
         return archive;
     }
 
@@ -90,10 +102,10 @@ public class WeldTest {
             Assert.fail(ex.getMessage());
         }
     }
-    
+
     @Inject
     private QualifiedWithValueFieldProducerTest qualifiedWithValueFieldProducerTest;
-    
+
     @Test
     public void qualifiedWithValueFieldProducerTest() {
         try {
@@ -381,25 +393,67 @@ public class WeldTest {
 
     /*
      * =========================================================================
-     * REPORT TEST
+     * METHOD INTERCEPTOR TEST
      * =========================================================================
      */
 
     @Inject
-    ProducerReporter producerReporter;
+    private MethodInterceptorTest methodInterceptorTest;
 
     @Test
-    public void producerReporter() {
-        System.out.println("Producer report##################################");
-        System.out.println(producerReporter.reportAll());
+    public void methodInterceptorTest() {
+        try {
+            methodInterceptorTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
     }
+
+    /*
+     * =========================================================================
+     * CLASS INTERCEPTOR TEST
+     * =========================================================================
+     */
+
+    @Inject
+    private ClassInterceptorTest classInterceptorTest;
+
+    @Test
+    public void classInterceptorTest() {
+        try {
+            classInterceptorTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    /*
+     * =========================================================================
+     * REPORT TEST
+     * =========================================================================
+     */
+
+//    @Inject
+//    ProducerReporter producerReporter;
+//
+//    @Test
+//    public void producerReporter() {
+//        System.out.println(producerReporter.reportAll());
+//    }
+
+//    @Inject
+//    InterceptorReporter interceptorReporter;
+//
+//    @Test
+//    public void interceptorReporter() {
+//        System.out.println(interceptorReporter.reportAll());
+//    }
 
     @Inject
     ComplianceReporter complianceReporter;
 
     @Test
     public void complianceReporter() {
-        System.out.println("Global report####################################");
         System.out.println(complianceReporter.reportAll());
     }
 
