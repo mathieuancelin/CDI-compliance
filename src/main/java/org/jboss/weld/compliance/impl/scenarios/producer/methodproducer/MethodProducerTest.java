@@ -30,9 +30,9 @@ public class MethodProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Method producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Method producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

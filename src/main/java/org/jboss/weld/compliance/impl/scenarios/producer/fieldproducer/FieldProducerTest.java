@@ -30,9 +30,9 @@ public class FieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

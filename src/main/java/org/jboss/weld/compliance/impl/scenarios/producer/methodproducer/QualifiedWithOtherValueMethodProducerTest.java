@@ -34,9 +34,9 @@ public class QualifiedWithOtherValueMethodProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Qualified with value (other) method producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Qualified with value (other) method producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

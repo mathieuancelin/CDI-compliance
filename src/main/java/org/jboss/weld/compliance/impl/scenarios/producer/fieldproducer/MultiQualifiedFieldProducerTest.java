@@ -34,9 +34,9 @@ public class MultiQualifiedFieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Multiqualified field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Multiqualified field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

@@ -33,9 +33,9 @@ public class InnerClassStaticMethodProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Autoproduced inner class using static method producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Autoproduced inner class using static method producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
     static private class StaticMethodProducerTestClass {

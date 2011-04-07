@@ -237,4 +237,29 @@ public class WeldTest {
         }
     }
 
+    /*
+     * =========================================================================
+     * REPORT TEST
+     * =========================================================================
+     */
+
+    @Inject
+    ProducerReporter producerReporter;
+
+    @Test
+    public void producerReporter() {
+        System.out.println("Producer report##################################");
+        System.out.println(producerReporter.reportAll());
+    }
+
+    @Inject
+    ComplianceReporter complianceReporter;
+
+    @Test
+    public void complianceReporter() {
+        System.out.println("Global report####################################");
+        System.out.println(complianceReporter.reportAll());
+    }
+
+
 }

@@ -34,9 +34,9 @@ public class MultiQualifiedMethodProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Multiqualified method producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Multiqualified method producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

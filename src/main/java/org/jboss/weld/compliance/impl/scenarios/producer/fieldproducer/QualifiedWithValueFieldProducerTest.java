@@ -35,9 +35,9 @@ public class QualifiedWithValueFieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Qualified with value field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Qualified with value field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

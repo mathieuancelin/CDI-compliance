@@ -32,9 +32,9 @@ public class QualifiedFieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Qualified field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Qualified field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

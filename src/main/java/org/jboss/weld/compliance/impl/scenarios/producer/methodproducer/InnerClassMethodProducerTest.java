@@ -35,9 +35,9 @@ public class InnerClassMethodProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Autoproduced inner class using method producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Autoproduced inner class using method producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
     private class MethodProducerTestClass {

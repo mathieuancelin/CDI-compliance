@@ -33,9 +33,9 @@ public class InnerClassFieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Autoproduced inner class using field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Autoproduced inner class using field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
     private class FieldProducerTestClass {
