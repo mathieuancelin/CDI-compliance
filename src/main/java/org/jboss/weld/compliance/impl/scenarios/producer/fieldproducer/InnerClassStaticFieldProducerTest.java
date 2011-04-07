@@ -6,7 +6,8 @@ import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
 
 /**
- *
+ * Test the compliance of autoproduced inner class. Try to inject an inner class
+ * typed field using a static producer field of this class.
  * @author Matthieu Clochard
  */
 public class InnerClassStaticFieldProducerTest implements Test {

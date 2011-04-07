@@ -3,12 +3,13 @@ package org.jboss.weld.compliance.impl.scenarios.producer.methodproducer;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
-import org.jboss.weld.compliance.impl.scenarios.producer.MethodProducedClass;
-import org.jboss.weld.compliance.impl.scenarios.producer.MultiQualified1;
-import org.jboss.weld.compliance.impl.scenarios.producer.MultiQualified2;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.MethodProducedClass;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.MultiQualified1;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.MultiQualified2;
 
 /**
- *
+ * Test the compliance of multiqualified field producer. Try to inject a
+ * multiqualified field using a producer method of an external class.
  * @author Matthieu Clochard
  */
 public class MultiQualifiedMethodProducerTest implements Test {

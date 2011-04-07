@@ -6,7 +6,9 @@ import org.jboss.weld.compliance.api.Scenario;
 import org.jboss.weld.compliance.api.Test;
 
 /**
- *
+ * A ready to be used implementation of a Scenario about producers.
+ * Report about the compliance of field and method producers in a large number
+ * of various situations.
  * @author Matthieu Clochard
  */
 public class ProducerReporter implements Scenario {

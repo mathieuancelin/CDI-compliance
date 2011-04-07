@@ -3,11 +3,14 @@ package org.jboss.weld.compliance.impl.scenarios.producer.methodproducer;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
-import org.jboss.weld.compliance.impl.scenarios.producer.MethodProducedClass;
-import org.jboss.weld.compliance.impl.scenarios.producer.QualifiedWithValue;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.MethodProducedClass;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.QualifiedWithValue;
 
 /**
- *
+ * Test the compliance of qualified field producer. Try to inject a qualified
+ * value discriminated field using a producer method of an external class.
+ * Another class test used the same Qualifier with another value :
+ * QualifiedWithOtherValueMethodProducerTest
  * @author Matthieu Clochard
  */
 public class QualifiedWithValueMethodProducerTest implements Test {

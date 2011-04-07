@@ -25,6 +25,7 @@ import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.MultiQua
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithOtherValueMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithValueMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.FieldProducedClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,8 +44,9 @@ public class WeldTest {
                 .addPackage(ComplianceException.class.getPackage())
                 .addPackage(ComplianceReporterImpl.class.getPackage())
                 .addPackage(ProducerReporter.class.getPackage())
-                .addPackage(InnerClassFieldProducerTest.class.getPackage())
-                .addPackage(InnerClassMethodProducerTest.class.getPackage())
+                .addPackage(FieldProducerTest.class.getPackage())
+                .addPackage(MethodProducerTest.class.getPackage())
+                .addPackage(FieldProducedClass.class.getPackage())
                 .addResource(EmptyAsset.INSTANCE, "META-INF/beans.xml");
         return archive;
     }

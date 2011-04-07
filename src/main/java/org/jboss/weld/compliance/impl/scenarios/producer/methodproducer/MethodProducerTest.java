@@ -3,10 +3,11 @@ package org.jboss.weld.compliance.impl.scenarios.producer.methodproducer;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
-import org.jboss.weld.compliance.impl.scenarios.producer.MethodProducedClass;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.MethodProducedClass;
 
 /**
- *
+ * Test the compliance of simple method producer. Try to inject a field using a
+ * producer method of an external class.
  * @author Matthieu Clochard
  */
 public class MethodProducerTest implements Test {
