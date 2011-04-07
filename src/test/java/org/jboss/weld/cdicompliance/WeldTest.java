@@ -1,5 +1,10 @@
 package org.jboss.weld.cdicompliance;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.jboss.arquillian.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -57,7 +62,9 @@ public class WeldTest {
                 .addPackage(FieldProducerTest.class.getPackage())
                 .addPackage(MethodProducerTest.class.getPackage())
                 .addPackage(FieldProducedClass.class.getPackage())
-                .addResource(EmptyAsset.INSTANCE, "META-INF/beans.xml");
+                .addResource("META-INF/beans.xml", "beans.xml");
+//                .addResource(EmptyAsset.INSTANCE, "META-INF/beans.xml");
+        System.out.println(archive.toString(true));
         return archive;
     }
 
