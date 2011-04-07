@@ -7,6 +7,7 @@ import org.jboss.weld.compliance.api.Scenario;
 import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.MethodInterceptorTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ValuedMethodInterceptorTest;
 
 /**
  *
@@ -18,10 +19,12 @@ public class InterceptorReporter implements Scenario {
 
     @Inject
     public InterceptorReporter(ClassInterceptorTest t1,
-            MethodInterceptorTest t2) {
+            MethodInterceptorTest t2,
+            ValuedMethodInterceptorTest t3) {
         tests = new ArrayList<Test>();
         tests.add(t1);
         tests.add(t2);
+        tests.add(t3);
     }
 
     @Override

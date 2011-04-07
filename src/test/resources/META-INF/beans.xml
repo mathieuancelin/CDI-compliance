@@ -7,6 +7,8 @@
     <interceptors>
         <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.MethodInterceptorClass</class>
         <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ClassInterceptorClass</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ValuedMethodInterceptor1Class</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ValuedMethodInterceptor2Class</class>
     </interceptors>
 
 </beans>

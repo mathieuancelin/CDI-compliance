@@ -12,6 +12,7 @@ import org.jboss.weld.compliance.impl.ComplianceReporterImpl;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.MethodInterceptorTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ValuedMethodInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ClassInterception;
 import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.FieldProducerTest;
@@ -404,6 +405,18 @@ public class WeldTest {
     public void methodInterceptorTest() {
         try {
             methodInterceptorTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private ValuedMethodInterceptorTest valuedMethodInterceptorTest;
+
+    @Test
+    public void valuedMethodInterceptorTest() {
+        try {
+            valuedMethodInterceptorTest.run();
         } catch (ComplianceException ex) {
             Assert.fail(ex.getMessage());
         }
