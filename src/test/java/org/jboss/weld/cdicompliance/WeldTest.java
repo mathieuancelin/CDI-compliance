@@ -14,11 +14,17 @@ import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.FieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.InnerClassFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.InnerClassStaticFieldProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.MultiQualifiedFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedWithOtherValueFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.QualifiedWithValueFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.InnerClassMethodProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.InnerClassStaticMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.MethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.MultiQualifiedMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithOtherValueMethodProducerTest;
+import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.QualifiedWithValueMethodProducerTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,6 +48,12 @@ public class WeldTest {
                 .addResource(EmptyAsset.INSTANCE, "META-INF/beans.xml");
         return archive;
     }
+
+    /*
+     * =========================================================================
+     * FIELD PRODUCER TEST
+     * =========================================================================
+     */
 
     @Inject
     private FieldProducerTest fieldProducerTest;
@@ -90,6 +102,90 @@ public class WeldTest {
             Assert.fail(ex.getMessage());
         }
     }
+
+    @Inject
+    private MultiQualifiedFieldProducerTest multiQualifiedFieldProducerTest;
+
+    @Test
+    public void multiQualifiedFieldProducerTest() {
+        try {
+            multiQualifiedFieldProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    /*
+     * =========================================================================
+     * METHOD PRODUCER TEST
+     * =========================================================================
+     */
+
+    @Inject
+    private MethodProducerTest methodProducerTest;
+
+    @Test
+    public void methodProducerTest() {
+        try {
+            methodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedMethodProducerTest qualifiedMethodProducerTest;
+
+    @Test
+    public void qualifiedMethodProducerTest() {
+        try {
+            qualifiedMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedWithValueMethodProducerTest qualifiedWithValueMethodProducerTest;
+
+    @Test
+    public void qualifiedWithValueMethodProducerTest() {
+        try {
+            qualifiedWithValueMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private QualifiedWithOtherValueMethodProducerTest qualifiedWithOtherValueMethodProducerTest;
+
+    @Test
+    public void qualifiedWithOtherValueMethodProducerTest() {
+        try {
+            qualifiedWithOtherValueMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private MultiQualifiedMethodProducerTest multiQualifiedMethodProducerTest;
+
+    @Test
+    public void multiQualifiedMethodProducerTest() {
+        try {
+            multiQualifiedMethodProducerTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    /*
+     * =========================================================================
+     * INNER CLASS PRODUCER TEST
+     * =========================================================================
+     */
     
     @Inject
     private InnerClassFieldProducerTest innerClassFieldProducerTest;
