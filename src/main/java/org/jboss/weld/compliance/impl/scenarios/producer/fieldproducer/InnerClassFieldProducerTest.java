@@ -6,7 +6,8 @@ import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
 
 /**
- *
+ * Test the compliance of autoproduced inner class. Try to inject an inner class
+ * typed field using a producer field of this class.
  * @author Matthieu Clochard
  */
 public class InnerClassFieldProducerTest implements Test {
@@ -32,9 +33,9 @@ public class InnerClassFieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Autoproduced inner class using field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Autoproduced inner class using field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
     private class FieldProducerTestClass {

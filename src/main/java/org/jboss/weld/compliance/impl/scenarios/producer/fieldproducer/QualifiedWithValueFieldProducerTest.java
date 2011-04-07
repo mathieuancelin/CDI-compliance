@@ -3,12 +3,15 @@ package org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
-import org.jboss.weld.compliance.impl.scenarios.producer.FieldProducedClass;
-import org.jboss.weld.compliance.impl.scenarios.producer.Qualified;
-import org.jboss.weld.compliance.impl.scenarios.producer.QualifiedWithValue;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.FieldProducedClass;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.Qualified;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.QualifiedWithValue;
 
 /**
- *
+ * Test the compliance of qualified field producer. Try to inject a qualified
+ * value discriminated field using a producer field of an external class.
+ * Another class test used the same Qualifier with another value :
+ * QualifiedWithOtherValueFieldProducerTest
  * @author Matthieu Clochard
  */
 public class QualifiedWithValueFieldProducerTest implements Test {
@@ -32,9 +35,9 @@ public class QualifiedWithValueFieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Qualified with value field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Qualified with value field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

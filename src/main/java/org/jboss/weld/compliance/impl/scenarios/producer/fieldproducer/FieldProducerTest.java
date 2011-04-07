@@ -3,10 +3,11 @@ package org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
-import org.jboss.weld.compliance.impl.scenarios.producer.FieldProducedClass;
+import org.jboss.weld.compliance.impl.scenarios.producer.util.FieldProducedClass;
 
 /**
- *
+ * Test the compliance of simple field producer. Try to inject a field using a
+ * producer field of an external class.
  * @author Matthieu Clochard
  */
 public class FieldProducerTest implements Test {
@@ -29,9 +30,9 @@ public class FieldProducerTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return "Field producer uncompliant : " + ex.getMessage();
+            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
         }
-        return "Field producer compliant";
+        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

@@ -8,7 +8,9 @@ import org.jboss.weld.compliance.api.Scenario;
 import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
 
 /**
- *
+ * A ready to be uses implementation of a ComplianceReporter.
+ * Report about the compliance of :
+ *    #Producers
  * @author Matthieu Clochard
  */
 public class ComplianceReporterImpl implements ComplianceReporter {
@@ -16,8 +18,9 @@ public class ComplianceReporterImpl implements ComplianceReporter {
     private Set<Scenario> scenarios;
 
     @Inject
-    public ComplianceReporterImpl() {
+    public ComplianceReporterImpl(ProducerReporter producerReporter) {
         scenarios = new HashSet<Scenario>();
+        scenarios.add(producerReporter);
     }
 
     @Override
