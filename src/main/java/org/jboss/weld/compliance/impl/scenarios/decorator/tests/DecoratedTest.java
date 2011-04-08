@@ -26,7 +26,7 @@ public class DecoratedTest extends AbstractTest {
         if(!fieldProduced.getName().equals("DecoratedClassAfter")) {
             throw new ComplianceException("the decoration went wrong (decorated method never called or too soon)");
         }
-        if(!fieldProduced.getDecoratorName().equals("DecoratedClass")) {
+        if(!fieldProduced.getDecoratorName().equals("DecoratorClass")) {
             throw new ComplianceException("the decoration went wrong (decorator never called)");
         }
     }
