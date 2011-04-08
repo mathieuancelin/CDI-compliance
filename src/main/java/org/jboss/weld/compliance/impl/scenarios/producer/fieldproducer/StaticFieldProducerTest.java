@@ -1,8 +1,8 @@
 package org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer;
 
 import javax.inject.Inject;
-import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
+import org.jboss.weld.compliance.impl.AbstractTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.util.StaticFieldProducedClass;
 
 /**
@@ -10,7 +10,7 @@ import org.jboss.weld.compliance.impl.scenarios.producer.util.StaticFieldProduce
  * static producer field of an external class.
  * @author Matthieu Clochard
  */
-public class StaticFieldProducerTest implements Test {
+public class StaticFieldProducerTest extends AbstractTest {
 
     @Inject
     private StaticFieldProducedClass fieldProduced;
@@ -23,16 +23,6 @@ public class StaticFieldProducerTest implements Test {
         if(!fieldProduced.getName().equals("StaticFieldProducedClass")) {
             throw new ComplianceException("the injected value was wrong (produced elsewhere)");
         }
-    }
-
-    @Override
-    public String getResult() {
-        try {
-            run();
-        } catch (ComplianceException ex) {
-            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
-        }
-        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

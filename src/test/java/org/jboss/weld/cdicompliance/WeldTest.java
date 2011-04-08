@@ -9,6 +9,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.weld.compliance.api.ComplianceReporter;
 import org.jboss.weld.compliance.exception.ComplianceException;
 import org.jboss.weld.compliance.impl.ComplianceReporterImpl;
+import org.jboss.weld.compliance.impl.scenarios.decorator.DecoratorReporter;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ChainMethodInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptorTest;
@@ -65,6 +66,7 @@ public class WeldTest {
                 .addPackage(InterceptorReporter.class.getPackage())
                 .addPackage(MethodInterceptorTest.class.getPackage())
                 .addPackage(ClassInterception.class.getPackage())
+                .addPackage(DecoratorReporter.class.getPackage())
                 .addResource("META-INF/beans.xml", "beans.xml");
 //                .addManifestResource(
 //						new UrlAsset( WeldTest.class.getResource( "/META-INF/beans.xml" ) ),

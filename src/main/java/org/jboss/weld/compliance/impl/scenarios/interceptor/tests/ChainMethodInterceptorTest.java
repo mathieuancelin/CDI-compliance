@@ -1,8 +1,8 @@
 package org.jboss.weld.compliance.impl.scenarios.interceptor.tests;
 
 import javax.inject.Inject;
-import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
+import org.jboss.weld.compliance.impl.AbstractTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ChainMethodInterceptedClass;
 
 /**
@@ -12,7 +12,7 @@ import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ChainMethodInte
  * ->business).
  * @author Matthieu Clochard
  */
-public class ChainMethodInterceptorTest implements Test {
+public class ChainMethodInterceptorTest extends AbstractTest {
 
     @Inject
     private ChainMethodInterceptedClass fieldProduced;
@@ -35,16 +35,6 @@ public class ChainMethodInterceptorTest implements Test {
         if(!fieldProduced.getInterception2name().equals("ChainMethodInterceptor2Class")) {
             throw new ComplianceException("the interception went wrong (second interceptor never called)");
         }
-    }
-
-    @Override
-    public String getResult() {
-        try {
-            run();
-        } catch (ComplianceException ex) {
-            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
-        }
-        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

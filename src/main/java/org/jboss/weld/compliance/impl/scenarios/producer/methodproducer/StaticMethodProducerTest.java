@@ -1,8 +1,8 @@
 package org.jboss.weld.compliance.impl.scenarios.producer.methodproducer;
 
 import javax.inject.Inject;
-import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
+import org.jboss.weld.compliance.impl.AbstractTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.util.StaticMethodProducedClass;
 
 /**
@@ -10,7 +10,7 @@ import org.jboss.weld.compliance.impl.scenarios.producer.util.StaticMethodProduc
  * static producer method of an external class.
  * @author Matthieu Clochard
  */
-public class StaticMethodProducerTest implements Test {
+public class StaticMethodProducerTest extends AbstractTest {
 
     @Inject
     private StaticMethodProducedClass fieldProduced;
@@ -23,16 +23,6 @@ public class StaticMethodProducerTest implements Test {
         if(!fieldProduced.getName().equals("StaticMethodProducedClass")) {
             throw new ComplianceException("the injected value was wrong (produced elsewhere)");
         }
-    }
-
-    @Override
-    public String getResult() {
-        try {
-            run();
-        } catch (ComplianceException ex) {
-            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
-        }
-        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }
