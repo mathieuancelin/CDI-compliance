@@ -19,7 +19,14 @@ public abstract class AbstractTest implements Test {
         try {
             run();
         } catch (ComplianceException ex) {
-            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
+            for(int i = offset;i > 0;i--) {
+                result += " ";
+            }
+            result += "UNCOMPLIANT";
+            if(ex.getMessage() != null && !ex.getMessage().equals("")) {
+                result += " (error log : " + ex.getMessage() + ")";
+            }
+            return result;
         }
         for(int i = offset;i > 0;i--) {
             result += " ";

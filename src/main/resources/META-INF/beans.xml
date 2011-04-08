@@ -12,5 +12,8 @@
         <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ChainMethodInterceptor1Class</class>
         <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ChainMethodInterceptor2Class</class>
     </interceptors>
+    <decorators>
+        <class>org.jboss.weld.compliance.impl.scenarios.decorator.util.DecoratorClass</class>
+    </decorators>
 
 </beans>

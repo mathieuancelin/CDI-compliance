@@ -10,6 +10,8 @@ import org.jboss.weld.compliance.api.ComplianceReporter;
 import org.jboss.weld.compliance.exception.ComplianceException;
 import org.jboss.weld.compliance.impl.ComplianceReporterImpl;
 import org.jboss.weld.compliance.impl.scenarios.decorator.DecoratorReporter;
+import org.jboss.weld.compliance.impl.scenarios.decorator.tests.DecoratedTest;
+import org.jboss.weld.compliance.impl.scenarios.decorator.util.Decorated;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ChainMethodInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptorTest;
@@ -67,6 +69,8 @@ public class WeldTest {
                 .addPackage(MethodInterceptorTest.class.getPackage())
                 .addPackage(ClassInterception.class.getPackage())
                 .addPackage(DecoratorReporter.class.getPackage())
+                .addPackage(DecoratedTest.class.getPackage())
+                .addPackage(Decorated.class.getPackage())
                 .addResource("META-INF/beans.xml", "beans.xml");
 //                .addManifestResource(
 //						new UrlAsset( WeldTest.class.getResource( "/META-INF/beans.xml" ) ),

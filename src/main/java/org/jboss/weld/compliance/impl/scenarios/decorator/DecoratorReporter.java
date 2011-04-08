@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.impl.AbstractScenarioReporter;
+import org.jboss.weld.compliance.impl.scenarios.decorator.tests.DecoratedTest;
 
 /**
  *
@@ -12,8 +13,9 @@ import org.jboss.weld.compliance.impl.AbstractScenarioReporter;
 public class DecoratorReporter extends AbstractScenarioReporter {
 
     @Inject
-    public DecoratorReporter() {
+    public DecoratorReporter(DecoratedTest t1) {
         tests = new ArrayList<Test>();
+        tests.add(t1);
     }
 
 }
