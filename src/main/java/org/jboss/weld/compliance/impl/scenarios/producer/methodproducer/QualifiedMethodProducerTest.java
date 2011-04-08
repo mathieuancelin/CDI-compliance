@@ -1,8 +1,8 @@
 package org.jboss.weld.compliance.impl.scenarios.producer.methodproducer;
 
 import javax.inject.Inject;
-import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
+import org.jboss.weld.compliance.impl.AbstractTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.util.MethodProducedClass;
 import org.jboss.weld.compliance.impl.scenarios.producer.util.Qualified;
 
@@ -11,7 +11,7 @@ import org.jboss.weld.compliance.impl.scenarios.producer.util.Qualified;
  * field using a producer method of an external class.
  * @author Matthieu Clochard
  */
-public class QualifiedMethodProducerTest implements Test {
+public class QualifiedMethodProducerTest extends AbstractTest {
 
     @Inject
     @Qualified
@@ -25,16 +25,6 @@ public class QualifiedMethodProducerTest implements Test {
         if(!fieldProduced.getName().equals("QualifiedMethodProducedClass")) {
             throw new ComplianceException("the injected value was wrong (produced elsewhere)");
         }
-    }
-
-    @Override
-    public String getResult() {
-        try {
-            run();
-        } catch (ComplianceException ex) {
-            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
-        }
-        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

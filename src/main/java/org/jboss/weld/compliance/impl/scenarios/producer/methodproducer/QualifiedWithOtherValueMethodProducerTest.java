@@ -1,8 +1,8 @@
 package org.jboss.weld.compliance.impl.scenarios.producer.methodproducer;
 
 import javax.inject.Inject;
-import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
+import org.jboss.weld.compliance.impl.AbstractTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.util.MethodProducedClass;
 import org.jboss.weld.compliance.impl.scenarios.producer.util.QualifiedWithValue;
 
@@ -13,7 +13,7 @@ import org.jboss.weld.compliance.impl.scenarios.producer.util.QualifiedWithValue
  * QualifiedWithValueMethodProducerTest
  * @author Matthieu Clochard
  */
-public class QualifiedWithOtherValueMethodProducerTest implements Test {
+public class QualifiedWithOtherValueMethodProducerTest extends AbstractTest {
 
     @Inject
     @QualifiedWithValue(false)
@@ -27,16 +27,6 @@ public class QualifiedWithOtherValueMethodProducerTest implements Test {
         if(!fieldProduced.getName().equals("QualifiedWithOtherValueMethodProducedClass")) {
             throw new ComplianceException("the injected value was wrong (produced elsewhere)");
         }
-    }
-
-    @Override
-    public String getResult() {
-        try {
-            run();
-        } catch (ComplianceException ex) {
-            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
-        }
-        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

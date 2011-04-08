@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.Scenario;
 import org.jboss.weld.compliance.api.Test;
+import org.jboss.weld.compliance.impl.AbstractScenarioReporter;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.FieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.InnerClassFieldProducerTest;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.InnerClassStaticFieldProducerTest;
@@ -36,9 +37,7 @@ import org.jboss.weld.compliance.impl.scenarios.producer.methodproducer.StaticMe
  * of various situations.
  * @author Matthieu Clochard
  */
-public class ProducerReporter implements Scenario {
-
-    private List<Test> tests;
+public class ProducerReporter extends AbstractScenarioReporter {
 
     @Inject
     public ProducerReporter(FieldProducerTest t1,
@@ -90,33 +89,6 @@ public class ProducerReporter implements Scenario {
         tests.add(t22);
         tests.add(t23);
         tests.add(t24);
-    }
-
-    @Override
-    public String report(Test test) {
-        return test.getResult();
-    }
-
-    @Override
-    public String reportAll() {
-        String report = "PRODUCER#############################################";
-        report += System.getProperty("line.separator");
-        if(tests.size() > 0) {
-            for(Test test : tests) {
-                report += test.getResult();
-                report += System.getProperty("line.separator");
-            }
-            return report;
-        }
-        report += "No test provided";
-        report += System.getProperty("line.separator");
-        return report;
-    }
-
-    @Override
-    public Scenario add(Test test) {
-        tests.add(test);
-        return this;
     }
 
 }

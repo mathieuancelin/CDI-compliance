@@ -1,8 +1,8 @@
 package org.jboss.weld.compliance.impl.scenarios.interceptor.tests;
 
 import javax.inject.Inject;
-import org.jboss.weld.compliance.api.Test;
 import org.jboss.weld.compliance.exception.ComplianceException;
+import org.jboss.weld.compliance.impl.AbstractTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ClassInterceptedClass;
 
 /**
@@ -12,7 +12,7 @@ import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ClassIntercepte
  * ->business).
  * @author Matthieu Clochard
  */
-public class ClassInterceptorTest implements Test {
+public class ClassInterceptorTest extends AbstractTest {
 
      @Inject
     private ClassInterceptedClass fieldProduced;
@@ -45,16 +45,6 @@ public class ClassInterceptorTest implements Test {
         if(!fieldProduced.getInterception2name().equals("ClassInterceptorClass")) {
             throw new ComplianceException("the second interception went wrong (interceptor never called)");
         }
-    }
-
-    @Override
-    public String getResult() {
-        try {
-            run();
-        } catch (ComplianceException ex) {
-            return getClass().getSimpleName() + " UNCOMPLIANT : " + ex.getMessage();
-        }
-        return getClass().getSimpleName() + " COMPLIANT";
     }
 
 }

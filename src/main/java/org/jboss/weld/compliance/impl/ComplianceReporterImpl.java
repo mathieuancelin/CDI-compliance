@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.inject.Inject;
 import org.jboss.weld.compliance.api.ComplianceReporter;
 import org.jboss.weld.compliance.api.Scenario;
+import org.jboss.weld.compliance.impl.scenarios.decorator.DecoratorReporter;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
 import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
 
@@ -12,6 +13,8 @@ import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
  * A ready to be uses implementation of a ComplianceReporter.
  * Report about the compliance of :
  *    #Producers
+ *    #Interceptors
+ *    #Decorators
  * Tested & working with Weld 1.1.
  * @author Matthieu Clochard
  */
@@ -21,10 +24,12 @@ public class ComplianceReporterImpl implements ComplianceReporter {
 
     @Inject
     public ComplianceReporterImpl(ProducerReporter producerReporter,
-            InterceptorReporter interceptorReporter) {
+            InterceptorReporter interceptorReporter,
+            DecoratorReporter decoratorReporter) {
         scenarios = new HashSet<Scenario>();
         scenarios.add(producerReporter);
         scenarios.add(interceptorReporter);
+        scenarios.add(decoratorReporter);
     }
 
     @Override

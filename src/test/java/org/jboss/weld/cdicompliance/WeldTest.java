@@ -9,9 +9,14 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.weld.compliance.api.ComplianceReporter;
 import org.jboss.weld.compliance.exception.ComplianceException;
 import org.jboss.weld.compliance.impl.ComplianceReporterImpl;
+import org.jboss.weld.compliance.impl.scenarios.decorator.DecoratorReporter;
+import org.jboss.weld.compliance.impl.scenarios.decorator.tests.DecoratedTest;
+import org.jboss.weld.compliance.impl.scenarios.decorator.util.Decorated;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ChainMethodInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.MethodInterceptorTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ValuedMethodInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ClassInterception;
 import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
 import org.jboss.weld.compliance.impl.scenarios.producer.fieldproducer.FieldProducerTest;
@@ -63,6 +68,9 @@ public class WeldTest {
                 .addPackage(InterceptorReporter.class.getPackage())
                 .addPackage(MethodInterceptorTest.class.getPackage())
                 .addPackage(ClassInterception.class.getPackage())
+                .addPackage(DecoratorReporter.class.getPackage())
+                .addPackage(DecoratedTest.class.getPackage())
+                .addPackage(Decorated.class.getPackage())
                 .addResource("META-INF/beans.xml", "beans.xml");
 //                .addManifestResource(
 //						new UrlAsset( WeldTest.class.getResource( "/META-INF/beans.xml" ) ),
@@ -404,6 +412,30 @@ public class WeldTest {
     public void methodInterceptorTest() {
         try {
             methodInterceptorTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private ValuedMethodInterceptorTest valuedMethodInterceptorTest;
+
+    @Test
+    public void valuedMethodInterceptorTest() {
+        try {
+            valuedMethodInterceptorTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private ChainMethodInterceptorTest chainMethodInterceptorTest;
+
+    @Test
+    public void chainMethodInterceptorTest() {
+        try {
+            chainMethodInterceptorTest.run();
         } catch (ComplianceException ex) {
             Assert.fail(ex.getMessage());
         }
